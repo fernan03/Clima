@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Clima App</h1>
+            <p>Consulta el clima actual y pronóstico para cualquier ciudad</p>
+        </header>
+        
+        <div class="search-box">
+            <div class="search-input-container">
+                <input type="text" id="city-input" placeholder="Introduce una ciudad..." autocomplete="off">
+                <div class="suggestions" id="suggestions-list"></div>
+            </div>
+            <button id="search-btn">Buscar</button>
+            <button id="location-btn" title="Usar mi ubicación actual">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Cargando...</p>
+        </div>
+        
+        <div class="error" id="error">
+            <div class="error-icon">⚠️</div>
+            <div class="error-message" id="error-message">No se pudo encontrar la ciudad. Intenta de nuevo.</div>
+            <button id="retry-btn" class="retry-btn">Reintentar</button>
+        </div>
+        
+        <div class="unit-toggle">
+            <span>Unidades: </span>
+            <button id="celsius-btn" class="unit-btn active">°C</button>
+            <button id="fahrenheit-btn" class="unit-btn">°F</button>
+        </div>
+        
+        <div class="recent-searches" id="recent-searches">
+            <h3>Búsquedas recientes</h3>
+            <ul id="recent-searches-list"></ul>
+        </div>
+        
+        <div class="current-weather" id="current-weather">
+            <div class="city-info">
+                <div class="city-name" id="city-name">--</div>
+                <div class="date" id="date">--</div>
+            </div>
+            <div class="weather-info">
+                <div class="temp" id="temp">--°C</div>
+                <div class="weather-icon">
+                    <img id="weather-icon" src="" alt="Icono del clima">
+                    <div class="weather-description" id="weather-description">--</div>
+                </div>
+            </div>
+            <div class="details">
+                <div class="detail-item">
+                    <div>Sensación térmica</div>
+                    <div id="feels-like">--°C</div>
+                </div>
+                <div class="detail-item">
+                    <div>Humedad</div>
+                    <div id="humidity">--%</div>
+                </div>
+                <div class="detail-item">
+                    <div>Viento</div>
+                    <div id="wind">-- km/h</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Pronóstico para 5 días</h2>
+        <div class="forecast" id="forecast"></div>
+        
+        <div class="api-status">
+            <div class="api-requests">
+                <small>Peticiones restantes hoy: <span id="remaining-requests">--</span></small>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Datos proporcionados por OpenWeatherMap API</p>
+        </footer>
+    </div>
+    
+    <div class="toast" id="toast">
+        <div class="toast-content" id="toast-content"></div>
+    </div>
+    
+    <script type="module" src="index.js"></script>
+</body>
+</html>
