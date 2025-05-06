@@ -34,7 +34,7 @@ elements.locationBtnEl.addEventListener('click', ()=> {
                     console.error(error);
                     showError("Error al obtener la ubicación");
                 })
-                .finally(hideLoading);
+                .finally(hideLoading); //comentario
         },
         error => {
             console.error(error);
