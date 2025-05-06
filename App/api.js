@@ -296,12 +296,12 @@ function convertTemperature(celsius, toFahrenheit ){
 
 
 
-module.exports={ 
+export{ 
     getWeather, 
     getForecast,
     getLocationWeatjer,
-    getCitySuggestions,
     convertTemperature,
+    getCitySuggestions,
     getRemainigRequests, 
     ICON_URL 
 };
