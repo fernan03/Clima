@@ -1,0 +1,42 @@
+pipeline {
+    agent any  // Esto ejecuta el pipeline en cualquier nodo disponible
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Clonamos el repositorio de pruebaCICD
+                git branch: 'main', url: 'https://github.com/fernan03/Clima.git'
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                // Instalamos las dependencias de Node.js usando npm
+                bat 'npm install'
+            }
+        }
+
+        stage('Run tests') {
+            steps {
+                // Ejecutamos las pruebas con Jest
+                bat 'npm test'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Este paso es opcional, por si quieres agregar una etapa de build
+                echo 'Construcción completada'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '¡Pipeline completado con éxito!'
+        }
+        failure {
+            echo 'Hubo un error en el pipeline.'
+        }
+    }
+}

@@ -286,7 +286,7 @@ function getRemainigRequests(){
     return MAX_DAILY_REQUESTS - dailyRequestCount;
 }
 
- export function convertTemperature(celsius, toFahrenheit ){
+function convertTemperature(celsius, toFahrenheit ){
     return toFahrenheit ? (celsius * 9)/ 5 + 32 : ((celsius - 32) * 5) / 9;
 }
 
@@ -296,7 +296,7 @@ function getRemainigRequests(){
 
 
 
-export { 
+module.exports={ 
     getWeather, 
     getForecast,
     getLocationWeatjer,
