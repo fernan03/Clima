@@ -290,10 +290,15 @@ function convertTemperature(celsius, toFahrenheit ){
     return toFahrenheit ? (celsius * 9)/ 5 + 32 : ((celsius - 32) * 5) / 9;
 }
 
-
-
-
-
+async function getUVIndex(lat, lon) {
+    const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/uvi?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('No se pudo obtener el índice UV');
+    }
+    const data = await response.json();
+    return data.value; // el índice UV como número
+  }
 
 
 export{ 
@@ -302,6 +307,7 @@ export{
     getLocationWeatjer,
     convertTemperature,
     getCitySuggestions,
-    getRemainigRequests, 
+    getRemainigRequests,
+    getUVIndex, 
     ICON_URL 
 };

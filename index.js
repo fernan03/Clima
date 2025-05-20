@@ -1,4 +1,4 @@
-import { getWeather, getForecast,getLocationWeatjer } from './App/api.js';
+import { getWeather, getForecast,getLocationWeatjer, getUVIndex } from './App/api.js';
 import { elements, showLoading, hideLoading, showError } from './App/dom.js';
 import { saveLastCity, getLastCity } from './App/funciones.js';
 import { displayCurrentWeather, displayForecast } from './App/weatherDisplay.js';
@@ -26,6 +26,13 @@ elements.locationBtnEl.addEventListener('click', ()=> {
                         throw new Error("datos incompletos de la API");
                     }
                     displayCurrentWeather(weather);
+                    
+                    getUVIndex(latitude,longitude).then(uvIndex => {
+                        elements.uvIndexEl.textContent = `Indice UV: ${uvIndex}`;
+                    }). catch(error => {
+                        console.warn('No se pudo obtener el indice UV',error)
+                    });
+                    
                     displayForecast(forecast);
                     //return getForecast(data.name);
                 })
@@ -57,10 +64,14 @@ function searchWeather() {
     getWeather(city)
         .then(weatherData => {
             displayCurrentWeather(weatherData);
-            return getForecast(city);
-        })
-        .then(forecastData => {
-            displayForecast(forecastData);
+            const { lat, lon } = weatherData.coord;
+            return Promise.all([
+                getForecast(city),
+                getUVIndex(lat,lon)
+            ]).then(([forecastData, uvIndex]) => {
+                displayForecast(forecastData);
+                elements.uvIndexEl.textContent = `Indice UV: ${uvIndex}`;
+            });
         })
         .catch(error => {
             console.error('Error:', error);

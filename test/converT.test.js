@@ -11,3 +11,11 @@ test('convierte Celsius a Fahrenheit', () => {
 test('convierte Fahrenheit a Celsius', () => {
   expect(convertTemperature(32, false)).toBe(0);
 });
+
+test('32°F a Celsius debe ser 0°C', () => {
+  expect(convertTemperature(32, false)).toBe(0);
+});
+
+test('212°F a Celsius debe ser 100°C', () => {
+  expect(convertTemperature(212, false)).toBe(100);
+});

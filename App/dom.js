@@ -39,7 +39,9 @@ const elements = {
     recentSearchesListEl: document.getElementById('recent-searches-list'),
 
     //Estado de API
-    remainingRequestsEl: document.getElementById('remaining-requests')
+    remainingRequestsEl: document.getElementById('remaining-requests'),
+
+    uvIndexEl: document.getElementById('uv-index'),
 };
 
 // Función para mostrar el indicador de carga

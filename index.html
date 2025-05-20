@@ -13,6 +13,8 @@
             <p>Consulta el clima actual y pronóstico para cualquier ciudad</p>
         </header>
         
+        
+
         <div class="search-box">
             <div class="search-input-container">
                 <input type="text" id="city-input" placeholder="Introduce una ciudad..." autocomplete="off">
@@ -35,19 +37,24 @@
         <div class="error" id="error">
             <div class="error-icon">⚠️</div>
             <div class="error-message" id="error-message">No se pudo encontrar la ciudad. Intenta de nuevo.</div>
-            <button id="retry-btn" class="retry-btn">Reintentar</button>
+            <!--<button id="retry-btn" class="retry-btn">Reintentar</button>-->
         </div>
         
-        <div class="unit-toggle">
+        <div class="detail-item">
+            <div></div>
+            <div id="uv-index">--</div>
+          </div>
+
+        <!--<div class="unit-toggle">
             <span>Unidades: </span>
             <button id="celsius-btn" class="unit-btn active">°C</button>
             <button id="fahrenheit-btn" class="unit-btn">°F</button>
-        </div>
+        </div>-->
         
-        <div class="recent-searches" id="recent-searches">
+        <!--<div class="recent-searches" id="recent-searches">
             <h3>Búsquedas recientes</h3>
             <ul id="recent-searches-list"></ul>
-        </div>
+        </div>-->
         
         <div class="current-weather" id="current-weather">
             <div class="city-info">
@@ -82,7 +89,7 @@
         
         <div class="api-status">
             <div class="api-requests">
-                <small>Peticiones restantes hoy: <span id="remaining-requests">--</span></small>
+                <!--<small>Peticiones restantes hoy: <span id="remaining-requests">--</span></small>-->
             </div>
         </div>
         
